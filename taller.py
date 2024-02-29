@@ -7,8 +7,8 @@ import secrets
 taller = Flask(__name__)
 CORS(taller)
 
-nombres_usuarios = ['rafael', 'santiago', 'steffany', 'veimar', 'albeiro']  # Agrega nombres reales
-dominios_ficticios = ['gmail.com', 'hotmail.net', 'yahoo.org', 'datosabiertos.info', 'bootcamp.biz']  # Agrega dominios ficticios
+nombres_usuarios = ['rafael', 'santiago', 'steffany', 'veimar', 'albeiro']
+dominios_ficticios = ['gmail.com', 'hotmail.net', 'yahoo.org', 'datosabiertos.info', 'bootcamp.biz']
 
 @taller.route('/generar-datos')
 def generar_datos():
@@ -19,7 +19,7 @@ def generar_datos():
         nombre_usuario = random.choice(nombres_usuarios)
         dominio = random.choice(dominios_ficticios)
 
-        # Generar contraseña aleatoria entre 8 y 12 caracteres
+        
         longitud_contrasena = random.randint(8, 12)
         contrasena = ''.join(secrets.choice(string.ascii_letters + string.digits) for _ in range(longitud_contrasena))
 
@@ -27,7 +27,7 @@ def generar_datos():
             'nombre': nombre_usuario,
             'correo': f'{nombre_usuario}@{dominio}',
             'contrasena': contrasena,
-            # Puedes agregar más campos según tus necesidades
+            
         })
 
     return jsonify(datos_generados)

@@ -11,7 +11,7 @@ function consumirApi1() {
         var poblacion = [];
         var pais = [];
 
-        // Organiza los datos por región y filtra solo los continentes deseados
+        
         data1.forEach(function(paisData) {
             var continents = paisData.continents;
             if (["Europe", "Asia", "South America"].includes(continents[0])) {
@@ -49,36 +49,8 @@ function consumirApi1() {
 }
 
 
-// function consumirApi1(){
-//     var endPoint1 = document.getElementById("api1").value;
-//     fetch(endPoint1)
-//     .then(function(response1){
-//         return response1.json();
-//     })
-//     .then(function(data1){
-//          var poblacion = [];
-//          var pais = []; 
-
-//         for (let i=0; i<data1.length; i++){
-//              poblacion.push(data1[i].population);
-//              pais.push(data1[i].name.official)
-//         }
-//         var grafica1 = [
-//             {
-//                 x:pais,
-//                 y:poblacion,
-//                 type: 'bar'
-//             }
-//         ];
-//         Plotly.newPlot('myDiv1', grafica1) 
-//     })
-//     .catch(function(error1){
-//         console.log("Error: "+ error1);
-//     });
-// }
 function consumirApi2(){
     var endPoint2 = "http://127.0.0.1:5000/generar-datos"; 
-    // document.getElementById("api2").value;
     fetch(endPoint2)
     .then(function(response2){
         return response2.json();
@@ -91,8 +63,8 @@ function consumirApi2(){
         var tiposDeDominios = {};
 
         data2.forEach(function(usuario) {
-            var dominio = usuario.correo.split('@')[1]; // Obtener el dominio del correo
-            tiposDeDominios[dominio] = (tiposDeDominios[dominio] || 0) + 1; // Contar tipos únicos de dominios
+            var dominio = usuario.correo.split('@')[1]; 
+            tiposDeDominios[dominio] = (tiposDeDominios[dominio] || 0) + 1; 
         });
 
         var cantidadContraseñasMas8 = contrasenasMas8.length;
@@ -124,32 +96,4 @@ function consumirApi2(){
 }
 
 
-// function consumirApi2(){
-//     var endPoint2 ="http://127.0.0.1:5000/generar-datos"; 
-//     // document.getElementById("api2").value;
-//     fetch(endPoint2)
-//     .then(function(response2){
-//         return response2.json();
-//     })
-//     .then(function(data2){
-//         var domi = [];
-//         var item = [];
-    
-//         for (let i=0; i<data2.length; i++){
-//             domi.push(data2[i].correo);
-//             item.push(data2[i].id);
-//         }
-//         var grafica2 = [
-//             {
-//                 x: domi,
-//                 y: item,
-//                 type: 'bar'
-//             }
-//         ];
-//         Plotly.newPlot('myDiv2', grafica2) //layout); se añadió para el taller 1
-//     })
-//     .catch(function(error2){
-//         console.log("Error: "+ error2);
-//     });
-// }
 
